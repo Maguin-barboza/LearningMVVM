@@ -32,11 +32,11 @@ namespace LearningMVVM.ViewModel
 			Funcionários.Add(new Funcionário()
 			{
 				Id = 1,
-				Nome = "João",
+				Nome = "João1",
 				Sobrenome = "Das Couve",
 				DataNascimento = new DateTime(1980, 01, 05),
 				Sexo = Sexo.Masculino,
-				EstadoCivil = EstadoCivil.Casado,
+				EstadoCivil = EstadoCivil.Solteiro,
 				DataAdmissão = new DateTime(1997, 01, 05)
 			});
 
