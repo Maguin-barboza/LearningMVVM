@@ -1,0 +1,64 @@
+﻿<Window x:Class="LearningMVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LearningMVVM"
+        mc:Ignorable="d"
+        Title="Lista Funcionários" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        
+        <!--Row0 Col1-->
+        <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" FontSize="14">
+            http://www.andrealveslima.com.br/blog/index.php/2017/11/15/exemplo-de-crud-no-wpf-com-mvvm/
+        </TextBlock>
+        
+        <!--Row1 Col1-->
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            
+            <!--Botão Novo Funcionário-->
+            <Button Margin="3" Padding="3"
+                    Content="Novo"
+                    CommandParameter="{Binding FuncionáriosViewModel}"
+                    Command="{Binding FuncionáriosViewModel.Novo}" />
+            
+            <!--botão Editar Funcionário-->
+            <Button Margin="3" Padding="3" 
+                    Content="Editar" 
+                    CommandParameter="{Binding FuncionáriosViewModel}"
+                    Command="{Binding FuncionáriosViewModel.Editar}"/>
+            
+            <!--Botão Deletar Funcionário-->
+            <Button Margin="3" Padding="3" 
+                    Content="Deletar"
+                    CommandParameter="{Binding FuncionáriosViewModel}" 
+                    Command="{Binding FuncionáriosViewModel.Deletar}" />
+        </StackPanel>
+        <ScrollViewer Grid.Row="2" Grid.Column="1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
+            <DataGrid AutoGenerateColumns="false" IsReadOnly="True" 
+                      ItemsSource="{Binding FuncionáriosViewModel.Funcionários}"
+                      SelectedItem="{Binding FuncionáriosViewModel.FuncionárioSelecionado}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" />
+                    <DataGridTextColumn Header="Sobrenome" Binding="{Binding Sobrenome}"/>
+                    <DataGridTextColumn Header="Data Nascimento" Binding="{Binding DataNascimento}" />
+                    <DataGridTextColumn Header="Sexo" Binding="{Binding Sexo}" />
+                    <DataGridTextColumn Header="Estado Civil" Binding="{Binding EstadoCivil}" />
+                    <DataGridTextColumn Header="Data Admissão" Binding="{Binding DataAdmissão}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+    </Grid>
+</Window>
